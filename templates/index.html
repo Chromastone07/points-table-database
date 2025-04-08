@@ -1,0 +1,153 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPL Points Table</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f9f9f9; /* Light background */
+            color: #333;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Container Styling */
+        .container {
+            background: #e0eaf3,#cfdef3; /* White background */
+            background-color: #dae2f8;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        /* Button Styling */
+        .btn-primary {
+            background: #007bff;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 123, 255, 0.5);
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            font-size: 1rem;
+        }
+
+        th {
+            background: #007bff; /* Blue header */
+            color: #fff;
+            font-weight: bold;
+        }
+
+        td {
+            background: #f9f9f9; /* Light gray rows */
+            color: #333;
+            border-bottom: 1px solid #ddd;
+        }
+
+        td img {
+            width: 40px;
+            height: auto;
+            margin-right: 10px; /* Spacing between logo and text */
+            vertical-align: middle;
+            border-radius: 5px;
+        }
+
+        /* Highlight Rows */
+        tr:hover td {
+            background: #f1f1f1; /* Slightly darker gray on hover */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            th, td {
+                font-size: 0.9rem;
+                padding: 10px;
+            }
+
+            td img {
+                width: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">IPL Points Table</h1>
+
+        <!-- Conditionally show the "Add Team" button if the user is an admin -->
+        {% if current_user.is_authenticated and current_user.is_admin %}
+            <a href="/add-team" class="btn btn-primary mb-3">Add Team</a>
+        {% endif %}
+        
+        <table class="table table-striped table-bordered mt-4">
+            <thead>
+                <tr>
+                    <th>Team</th>
+                    <th>Matches Played</th>
+                    <th>Wins</th>
+                    <th>Losses</th>
+                    <th>NRR</th>
+                    <th>Points</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for team in teams %}
+                <tr>
+                    <td><img src="{{ team.logo_url }}" alt="logo" width="30"> {{ team.team_name }}</td>
+                    <td>{{ team.matches_played }}</td>
+                    <td>{{ team.wins }}</td>
+                    <td>{{ team.losses }}</td>
+                    <td>{{ team.nrr }}</td>
+                    <td>{{ team.points }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!-- admin_dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f9fc; /* Light blue-gray background */
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Heading */
+        h1 {
+            text-align: center;
+            font-size: 2rem;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #ddd;
+            font-size: 1rem;
+        }
+
+        th {
+            background-color: #007bff;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        td {
+            background-color: #f9f9f9;
+        }
+
+        /* Button Styles */
+        .button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: #fff;
+            background-color: #28a745;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s ease, transform 0.2s;
+        }
+
+        .button:hover {
+            background-color: #218838;
+            transform: scale(1.05); /* Slight zoom effect on hover */
+        }
+
+        .button:active {
+            background-color: #1e7e34;
+            transform: scale(1); /* Reset zoom on click */
+        }
+
+        /* Team Logo */
+        .team-logo {
+            width: 50px;
+            height: auto;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            table {
+                font-size: 0.9rem;
+            }
+
+            .button {
+                font-size: 0.9rem;
+                padding: 8px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Admin Dashboard</h1>
+        <a href="{{ url_for('add_team') }}" class="button">Add Team</a>
+        <table>
+            <thead>
+                <tr>
+                    <th>Team Name</th>
+                    <th>Logo</th>
+                    <th>Matches Played</th>
+                    <th>Wins</th>
+                    <th>Losses</th>
+                    <th>NRR</th>
+                    <th>Points</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for team in teams %}
+                <tr>
+                    <td>{{ team.team_name }}</td>
+                    <td><img src="{{ team.logo_url }}" alt="Logo" class="team-logo"></td>
+                    <td>{{ team.matches_played }}</td>
+                    <td>{{ team.wins }}</td>
+                    <td>{{ team.losses }}</td>
+                    <td>{{ team.nrr }}</td>
+                    <td>{{ team.points }}</td>
+                    <td>
+                        <a href="{{ url_for('edit_team', team_id=team.id) }}" class="button">Edit Stats</a>
+                        <!-- Button to remove stats -->
+                        <a href="{{ url_for('remove_stats', team_id=team.id) }}" class="button" style="background-color: #ffc107;">Remove Stats</a>
+                        <!-- Button to remove the team -->
+                        <a href="{{ url_for('remove_team', team_id=team.id) }}" class="button" style="background-color: #dc3545;">Remove Team</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
