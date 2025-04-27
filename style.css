@@ -3,7 +3,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(135deg, #00c6ff, #0072ff); /* WPS-inspired Gradient */
+    background: linear-gradient(135deg, #00c6ff, #0072ff); 
     color: #fff;
     min-height: 100vh;
     display: flex;
@@ -12,11 +12,11 @@ body {
 }
 
 body:hover {
-    background: linear-gradient(135deg, #00c6ff, #0059b3); /* Darker WPS Gradient */
+    background: linear-gradient(135deg, #00c6ff, #0059b3); 
 }
 
 /* Header */
-/* header {
+header {
     background-color: rgba(0, 0, 0, 0.3);
     padding: 2em 0;
     text-align: center;
@@ -25,11 +25,11 @@ body:hover {
 }
 
 /* Navigation */
-/* nav ul {
+nav ul {
     list-style: none;
     padding: 0;
-    margin: 1em 0 0; */
-    /* display: flex;
+    margin: 1em 0 0;
+    display: flex;
     justify-content: center;
     background-color: rgba(255, 255, 255, 0.15);
     padding: 0.8em 1em;
@@ -49,8 +49,8 @@ nav a {
 }
 
 nav a:hover {
-    color: #ffd700;
-} */
+    color: #ffd700; 
+}
 
 /* Main Grid */
 .main-grid-container {
@@ -76,7 +76,7 @@ nav a:hover {
 }
 
 #featured-recipe h2 {
-    color: #00c6ff; /* WPS Blue */
+    color: #00c6ff; 
     margin-bottom: 1em;
     text-align: center;
 }
@@ -90,7 +90,7 @@ nav a:hover {
 }
 
 .recipe-list-area h2 {
-    color: #00c6ff; /* WPS Blue */
+    color: #00c6ff; 
     text-align: center;
     margin-bottom: 1em;
 }
@@ -233,7 +233,7 @@ nav a:hover {
 }
 
 .recipe-card h3 {
-    color: #00c6ff; /* WPS Blue */
+    color: #00c6ff; 
     margin-bottom: 10px;
 }
 
@@ -291,7 +291,7 @@ nav a:hover {
 }
 
 .recipe-header h2 {
-    color: #00c6ff; /* WPS Blue */
+    color: #00c6ff;
     margin-bottom: 1em;
 }
 
@@ -305,7 +305,7 @@ nav a:hover {
 
 .ingredients h3,
 .instructions h3 {
-    color: #00c6ff; /* WPS Blue */
+    color: #00c6ff; 
     border-bottom: 2px solid #eee;
     padding-bottom: 0.5em;
     margin-top: 2em;
@@ -345,7 +345,6 @@ nav a:hover {
 
 
 
-/* Custom Header Style for Builder.io Clone */
 .header-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -397,7 +396,7 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    color: #c084fc; /* Light Purple Hover */
+    color: #c084fc; 
 }
 
 nav ul li a::after {
@@ -454,7 +453,7 @@ nav ul li a:hover::after {
 
 
 .footer {
-    background: linear-gradient(to right, #00c6ff, #0072ff); /* Nice gradient */
+    background: linear-gradient(to right, #00c6ff, #0072ff); 
     padding: 20px;
     display: flex;
     justify-content: center;
@@ -472,7 +471,7 @@ nav ul li a:hover::after {
     width: 32px;
     height: 32px;
     object-fit: cover;
-    border-radius: 8px; /* Slightly rounded */
+    border-radius: 8px; 
     transition: transform 0.3s ease;
   }
   
