@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Romantic Choice Selector ❤️</title>
+    <style>
+        /* Romantic background */
+        body {
+            font-family: 'Cursive', sans-serif;
+            background: linear-gradient(to right, #ff9a9e, #fecfef);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Heart animation */
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* Container with soft pink design */
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(255, 0, 100, 0.2);
+            text-align: center;
+            width: 320px;
+            position: relative;
+        }
+
+        h2 {
+            color: #d63384;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 85%;
+            padding: 8px;
+            margin: 12px 0;
+            border: 2px solid #ff6b81;
+            border-radius: 5px;
+            outline: none;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        /* Romantic button */
+        button {
+            background: #ff4d6d;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #ff1e56;
+            transform: scale(1.1);
+        }
+
+        /* Heart icon */
+        .heart {
+            color: #ff4d6d;
+            font-size: 25px;
+            animation: heartbeat 1.5s infinite;
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Result text */
+        #result {
+            margin-top: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #c9184a;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="heart">❤️</div>
+        <h2>your choice 💖</h2>
+        <input type="number" id="choiceInput" placeholder="Type a number">
+        <button onclick="sendChoice()">Send Love 💘</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function sendChoice() {
+            let choice = document.getElementById("choiceInput").value;
+            
+            fetch(`/choice?value=${choice}`)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("result").innerText = data;
+                })
+                .catch(error => console.log("Error:", error));
+        }
+    </script>
+
+</body>
+</html>
